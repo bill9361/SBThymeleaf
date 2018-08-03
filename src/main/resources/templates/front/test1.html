@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Thymeleaf</title>
+</head>
+<body>
+	Test1
+	<br>
+	字符串数据：${hello}
+	<hr>
+	<span th:text="${hello}">span</span>
+	
+	<hr>
+	Id:<span th:text=${person.id}></span>
+	<br>
+	Name:<span th:text=${person.name}></span>
+	
+	<hr>
+	Id:<input name="id" th:value="${person.id}"/>
+	<br>
+	Name:<input name="name" th:value="${person.name}"/>
+	
+	<hr>
+	Id:<input name="id"  th:value="${person.id}" value="1111"/>
+	<br>
+	Name:<input name="name" th:value="${person.name}" value="fdsfsdfs"/>
+	
+	<hr>
+	<a href="http://www.dbis.cn:8081" th:href="@{http://www.baidu.com(id=${person.id})}">链接</a>
+	
+	<hr>
+	List集合数据：
+	<br>
+	<ul>
+		<li th:each="p:${personList}" th:text="${p.name}" th:value="${p.id}">无</li>
+	</ul>
+	
+	<hr>
+	使用Table显示：
+	<br>
+	<table>
+		<tr th:each="p:${personList}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+		</tr>
+	</table>
+	
+	<hr>
+	选择器：
+	<select>
+		<option th:each="p:${personList}" th:value="${p.id}" th:text="${p.name}"></option>
+	</select>
+	
+	<hr>
+	
+</body>
+</html>

@@ -1,0 +1,46 @@
+spring boot 在springmvc的视图解析器方面就默认集成了ContentNegotiatingViewResolver和BeanNameViewResolver，在视图引擎上就已经集成自动配置的模版引擎，如下：
+1. FreeMarker
+2. Groovy
+3. Thymeleaf
+4. Velocity (deprecated in 1.4)
+6. Mustache
+
+JSP技术spring boot 官方是不推荐的，原因有三：
+1. 在tomcat上，jsp不能在嵌套的tomcat容器解析即不能在打包成可执行的jar的情况下解析
+2. Jetty 嵌套的容器不支持jsp
+3. Undertow
+
+spring Boot加载html默认到resources/templates里寻找：
+
+编写模板文件，thymeleaf默认.html， freemarker 默认.ftl
+
+
+优缺点：
+thymeleaf优点：
+
+1.静态html嵌入标签属性，浏览器可以直接打开模板文件，便于前后端联调。
+
+2.springboot官方推荐方案。
+
+3.没了。
+
+thymeleaf缺点：
+
+1.模板必须符合xml规范，就这一点就可以判死刑！太不方便了！js脚本必须加入/*<![CDATA[*/标识，否则一个&符号就会导致后台模板合成抛异常，而且错误信息巨不友好，害得我调试了好几个小时才明白是怎么回事。js里面还好办，这样是在html里面含有&等符号，还需要转义？忒麻烦了！
+
+2.就上面一条就够了。
+
+freemarker优点：
+
+1.和jsp规范基本一致，大多数程序员几乎无学习成本。
+
+2.其他的不清楚
+
+freemarker缺点：
+
+1.还真不知道。
+
+
+FreeMarker比JSP好在什么地方
+使用模板库最大的不同是可以脱离servlet 容器，运行和测试的时候不必在 servlet容器下,这就赋予了代码运行的自由
+
